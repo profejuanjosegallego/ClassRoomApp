@@ -1,15 +1,23 @@
 package com.example.APIClassRoom.modelos;
 
 import com.example.APIClassRoom.ayudas.TipoUsuario;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 
-import java.time.LocalDate;
+
 
 @Entity
+@Table(name = "usuarios")
 public class Usuario {
-    
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_usuario")
     private Integer id;
+
+    @Column(nullable = false, length = 100)
     private String nombre;
+
+    @Column(name = "correo_electronico", unique = true)
     private String correoElectronico;
     private String contraseña;
     private String telefono;
