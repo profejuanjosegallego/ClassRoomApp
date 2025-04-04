@@ -6,6 +6,8 @@ import com.example.APIClassRoom.repositorios.IDocenteRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class DocenteServicio {
     @Autowired //Inyeccion de dependencias
@@ -25,6 +27,29 @@ public class DocenteServicio {
 
 
     //MODIFICAR
+    public Docente modifcarDocente(Integer id,Docente datosDocente)throws Exception{
+        try {
+            //Para modificar primero debo buscar
+            //JPA ME DEVUELVE UN DATO OPCIONAL (PUEDE ESTAR O NO)
+            Optional<Docente>docenteBuscado=this.repositorio.findById(id);
+
+
+            //Apenas lo busques pregunta si si estaba
+            if(docenteBuscado.isPresent()){
+                //Modifiquelo ps papa
+
+                docenteBuscado.get().setEspecialidad(datosDocente.getEspecialidad());//Modificando un dato viejo
+                return this.repositorio.save(docenteBuscado.get());
+
+            }else{
+                //No estaba el muñeco
+                throw new Exception("El usuario a modificar no se encunetra en BD");
+            }
+
+        }catch(Exception error){
+            throw new Exception(error.getMessage());
+        }
+    }
 
     //BUSCAR POR ID
 
