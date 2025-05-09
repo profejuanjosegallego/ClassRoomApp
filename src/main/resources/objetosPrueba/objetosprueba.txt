@@ -1,0 +1,16 @@
+/usuarios
+{
+    "nombre":"Juan Jose Gallego Mesa",
+    "correoElectronico":"juan@gmail.com",
+    "contraseña":"admin123*",
+    "telefono":"3225962363",
+    "tipoUsuario":"Docente"
+}
+
+/docentes
+{
+    "especialidad":"Ingeniero",
+    "usuario":{
+        "id":1
+    }
+}
